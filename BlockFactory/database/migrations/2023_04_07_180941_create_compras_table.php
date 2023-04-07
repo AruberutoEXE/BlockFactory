@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('idCliente')->references('id')->on('clientes');
             $table->timestamps();
         });
     }

@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('linea_carros', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('idProducto')->references('id')->on('productos');
+            $table->foreignId('idCarro')->references('id')->on('carros');
             $table->timestamps();
         });
     }
