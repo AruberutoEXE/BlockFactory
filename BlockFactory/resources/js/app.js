@@ -1,1 +1,2 @@
-import './bootstrap';
+require('./bootstrap');
+import * as bootstrap from 'bootstrap'
