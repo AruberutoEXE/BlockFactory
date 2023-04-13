@@ -1,6 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 use App\Models\Carrito;
+use App\Models\LineaCarro;
+use App\Models\Compra;
+use App\Models\LineaCompra;
 use Illuminate\Http\Request;
 use Session;
 
@@ -14,91 +17,47 @@ class CarritoController extends Controller
     public function index()
     {
         $user = Session::get('usuario');
-        $lineascarro = Carrito::where('slug', $user->id)->firstOrFail();
-        return view('Carrito.index', compact('lineascarro'));
+        $carro = Carrito::where('idCliente', $user->id)->firstOrFail();
+        
+        return view('Carrito.index', compact('carro'));
     }
    
-    /**
-    * Show the form for creating a new resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
-    public function create()
-    {
-        
-        return view('Carrito.create');
-    }
-
+   
     /**
     * Store a newly created resource in storage.
     *
-    * @param  \Illuminate\Http\Request  $request
+    * @param  \App\Models\Carrito  $Carrito
     * @return \Illuminate\Http\Response
     */
-    public function store(Request $request)
+    public function store(Carrito $Carrito)
     {
-       $request->validate([
-            'nombre' => 'required',
-            'apellidos' => 'required',
-            'edad' => 'required'
-        ]);
+      
         
-        Carrito::create($request->post());
-
-        return redirect()->route('Carrito.index')->with('success','Carrito se ha creado con exito.');
-    }
-
-    /**
-    * Display the specified resource.
-    *
-    * @param  \App\Carrito  $Carrito
-    * @return \Illuminate\Http\Response
-    */
-    public function show(Carrito $Carrito)
-    {
-        return view('Carrito.show',compact('Carrito'));
-    }
-
-    /**
-    * Show the form for editing the specified resource.
-    *
-    * @param  \App\Carrito  $Carrito
-    * @return \Illuminate\Http\Response
-    */
-    public function edit(Carrito $Carrito)
-    {
-        return view('Carrito.edit',compact('Carrito'));
-    }
-
-    /**
-    * Update the specified resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @param  \App\Carrito  $Carrito
-    * @return \Illuminate\Http\Response
-    */
-    public function update(Request $request, Carrito $Carrito)
-    {
-        $request->validate([
-            'nombre' => 'required',
-            'apellidos' => 'required',
-            'edad' => 'required'
-        ]);
+        $compra=Compra::create($Carrito);
+        $user = Session::get('usuario');
+        $carro = Carrito::where('idCliente', $user->id)->firstOrFail();
+        $lineascarro=$carro->lineasCarrito();
         
-        $Carrito->fill($request->post())->save();
-
-        return redirect()->route('Carrito.index')->with('success','Carrito Has Been updated successfully');
+        foreach ($lineascarro as $lineacarro) {
+            LineaCompra::create(['idProducto'=>$lineacarro->idProducto,'idCompra'=>$compra->id]);
+            $lineacarro->delete();
+        }
+        $carro->delete();
+        return redirect()->route('producto.index');
     }
+
+
 
     /**
     * Remove the specified resource from storage.
-    *
-    * @param  \App\Carrito  $Carrito
+    *@param  \Illuminate\Http\Request  $request
+    * @param  \App\Models\Carrito  $Carrito
     * @return \Illuminate\Http\Response
     */
-    public function destroy(Carrito $Carrito)
+    public function destroy(Request $request, Carrito $Carrito)
     {
-        $Carrito->delete();
-        return redirect()->route('Carrito.index')->with('success','Carrito has been deleted successfully');
+        $idP=$request->post()->idLinea;
+        LineaCarro::where('id',$idP)->first()->delete();
+        return redirect()->route('Carrito.index');
     }
 }

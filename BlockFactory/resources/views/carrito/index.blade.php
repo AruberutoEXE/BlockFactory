@@ -29,13 +29,14 @@ carrito
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($lineascarro as $lineacarro)
+                                    @foreach ($carro->lineasCarrito as $lineacarro)
                                         <tr>
 											<td>{{ $lineacarro->producto->nombre }}</td>
                                             <td>{{ $lineacarro->producto->precio }}€</td>
                                             <td>
-                                                <form action="{{ route('carrito.destroy',$producto->id) }}" method="POST">
+                                                <form action="{{ route('carrito.destroy',$carro->id) }}" method="POST">
                                                     @csrf
+                                                    <hidden name="idLinea" value="{{ $lineacarro->id }}" class="form-control" />
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
                                                 </form>
                                             </td>
