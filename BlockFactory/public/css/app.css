@@ -97,6 +97,7 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background-color: yellow;
 }
 
 hr {
@@ -1112,6 +1113,7 @@ progress {
   .col-md-4 {
     flex: 0 0 auto;
     width: 33.33333333%;
+    
   }
   .col-md-5 {
     flex: 0 0 auto;
@@ -4256,6 +4258,7 @@ textarea.form-control-lg {
   flex: 1 1 auto;
   padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
   color: var(--bs-card-color);
+  background-color: yellowgreen;;
 }
 
 .card-title {
@@ -4326,6 +4329,7 @@ textarea.form-control-lg {
 .card-img-top,
 .card-img-bottom {
   width: 100%;
+  max-height: 264px;
 }
 
 .card-img,
