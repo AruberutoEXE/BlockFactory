@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\CarroController;
 use Illuminate\Support\Facades\Route;
 /*use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
@@ -16,7 +17,7 @@ use App\Http\Controllers\CarroController;*/
 |
 */
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('productos');
 });
 
 Route::get('/home', function () {
@@ -24,13 +25,12 @@ Route::get('/home', function () {
     })->middleware('auth');
 
 //Auth::routes();
-
-Route::get('/carro.add/{$nombre}', [App\Http\Controllers\CarroController::class, 'add'])->name('carro.add');
-Route::get('/carro.add/{$nombre}', [App\Http\Controllers\CarroController::class, 'removeitem'])->name('carro.removeitem');
-
+Route::get('carro-add/{id}',[CarroController::class,'add'])->name('carro.add');
+Route::get('carro-index',[CarroController::class,'index'])->name('carro.index');
+Route::post('carro-removeItem/{id}',[CarroController::class,'removeitem'])->name('carro.removeitem');
+Route::post('carro-store',[CarroController::class,'store'])->name('carro.store');
 Route::resource('productos',ProductoController::class);
 Route::resource('categorias',CategoriaController::class);
-Route::resource('carro',CarroController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

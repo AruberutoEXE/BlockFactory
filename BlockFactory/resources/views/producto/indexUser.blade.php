@@ -39,7 +39,7 @@ producto
                       </div>
 
                       <div class="btn-group">
-                        <a class="btn btn-sm btn-primary " href="{{ route('carro.add',$producto->nombre) }}"><i class="fa fa-fw fa-eye"></i> Añadir al carrito</a>
+                        <a class="btn btn-sm btn-primary " href="{{ route('carro.add',$producto->id) }}"><i class="fa fa-fw fa-eye"></i> Añadir al carrito</a>
                       </div>
 
                       <span class="">{{ $producto->nombre }}</span>

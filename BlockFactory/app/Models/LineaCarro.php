@@ -15,6 +15,6 @@ class LineaCarro extends Model
         return $this->belongsTo(Producto::class,'producto_id');
     }
     public function carro(){
-        return $this->belongsTo(Carro::class, 'carro_id');
+        return $this->belongsTo(Carro::class);
     }
 }

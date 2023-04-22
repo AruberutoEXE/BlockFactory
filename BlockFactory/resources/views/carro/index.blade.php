@@ -34,9 +34,8 @@ carrito
 											<td>{{ $producto->nombre }}</td>
                                             <td>{{ $producto->precio }}€</td>
                                             <td>
-                                                <form action="{{ route('carro.removeitem',$carro->id) }}" method="POST">
+                                                <form action="{{ route('carro.removeitem',$producto->id) }}" method="POST">
                                                     @csrf
-                                                    <hidden name="idLinea" value="{{ $producto->id }}" class="form-control" />
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
                                                 </form>
                                             </td>
@@ -58,6 +57,7 @@ carrito
 
                         <div class="p-4 bg-secondary">
                         <form method="POST" action="{{route('carro.store') }}"  role="form" enctype="multipart/form-data">
+                        @csrf
                         <button type="submit" >Comprar</button>
 
                         </form>

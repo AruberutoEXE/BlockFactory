@@ -15,6 +15,6 @@ class Carro extends Model
         return $this->belongsTo(User::class, 'idCliente');
     }
     public function lineasCarrito(){
-        return $this->hasMany(LineaCarro::class);
+        return $this->hasMany(LineaCarro::class,'carro_id');
     }
 }

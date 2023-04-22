@@ -64,12 +64,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $carro=new Carro();
         $user=User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'idCarro'=>$carro->id
+
         ]);
-        Carro::create(['idCliente'=>$user->id]);
+        $carro->idCliente = $user->id;
+        $carro->save();
         return $user;
     }
 }

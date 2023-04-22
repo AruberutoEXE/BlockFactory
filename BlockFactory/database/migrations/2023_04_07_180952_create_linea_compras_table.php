@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('linea_compras', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('idProducto')->references('id')->on('productos');
-            $table->foreignId('idCompra')->references('id')->on('compras');
+            $table->foreignId('producto_id')->references('id')->on('productos');
+            $table->foreignId('compra_id')->references('id')->on('compras');
             $table->timestamps();
         });
     }
