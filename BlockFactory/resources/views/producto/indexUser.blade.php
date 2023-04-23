@@ -13,7 +13,7 @@ producto
           <div style="display: flex; justify-content: space-between; align-items: center;">
 
             <span id="card_title">
-              {{ __('LISTADO DE PRODUCTOS EN NUESTRA TIENDA ') }}
+            @lang('messages.LISTADO')
             </span>
           </div>
         </div>
@@ -35,9 +35,16 @@ producto
                     <p class="card-text">{{ $producto->descripcion }}</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                        <a class="btn btn-sm btn-primary " href="{{ route('productos.show',$producto->id) }}"><i class="fa fa-fw fa-eye"></i> Ver más</a>
+                        <a class="btn btn-sm btn-primary " href="{{ route('productos.show',$producto->id) }}"><i class="fa fa-fw fa-eye"></i>@lang('messages.mas')</a>
                       </div>
 
+<<<<<<< Updated upstream
+=======
+                      <div class="btn-group">
+                        <a class="btn btn-sm btn-primary " href="{{ route('carro.add',$producto->id) }}"><i class="fa fa-fw fa-eye"></i>@lang('messages.add')</a>
+                      </div>
+
+>>>>>>> Stashed changes
                       <span class="">{{ $producto->nombre }}</span>
                       <span class="text-muted">{{ $producto->precio }} €</span>
 

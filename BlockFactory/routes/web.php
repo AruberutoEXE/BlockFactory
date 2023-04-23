@@ -15,7 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+<<<<<<< Updated upstream
     return view('welcome');
+=======
+    app()->setLocale('en');
+    return redirect('productos');
+
+>>>>>>> Stashed changes
 });
 
 Route::get('/home', function () {

@@ -22,6 +22,7 @@
 </head>
 
 <body>
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -37,13 +38,20 @@
                     <ul class="navbar-nav me-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('productos.index') }}">{{ __('Productos') }}</a>
+                            <a class="nav-link" href="{{ route('productos.index') }}">@lang('messages.productos')</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('categorias.index') }}">{{ __('Categorias') }}</a>
+                            <a class="nav-link" href="{{ route('categorias.index') }}">@lang('messages.categorias')</a>
                         </li>
 
+<<<<<<< Updated upstream
+=======
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('carro.index') }}"> @lang('messages.carro') </a>
+                        </li>
+
+>>>>>>> Stashed changes
                     </ul>
 
                     <!-- Right Side Of Navbar -->
