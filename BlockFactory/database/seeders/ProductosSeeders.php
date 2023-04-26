@@ -18,5 +18,6 @@ class ProductosSeeders extends Seeder
         DB::table('Productos')->insert(['categoria_id'=> Str::random(10),'nombre'=> Str::random(10),'precio'=>20,'cantidad'=>200,'descripcion'=> Str::random(10)]);
         DB::table('Productos')->insert(['categoria_id'=> Str::random(10),'nombre'=> Str::random(10),'precio'=>20,'cantidad'=>200,'descripcion'=> Str::random(10)]);
         DB::table('Productos')->insert(['categoria_id'=> Str::random(10),'nombre'=> Str::random(10),'precio'=>20,'cantidad'=>200,'descripcion'=> Str::random(10)]);
+    
     }
 }
