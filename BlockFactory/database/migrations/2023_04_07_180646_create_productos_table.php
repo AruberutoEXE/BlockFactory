@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->float('price', 8, 2);
-            $table->integer('amount');
-            $table->string('aditional_features');
+            $table->string('categoria_id');
+            $table->string('nombre');
+            $table->float('precio', 8, 2);
+            $table->integer('cantidad');
+            $table->string('descripcion');
             $table->timestamps();
         });
     }

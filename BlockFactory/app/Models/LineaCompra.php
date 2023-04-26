@@ -10,11 +10,11 @@ class LineaCompra extends Model
 {
     public $timestamps = false;
     use HasFactory;
-    protected $fillable = ['idProducto','idCompra'];
+    protected $fillable = ['producto_id','compra_id'];
     public function producto(){
-        return $this->belongsTo(Producto::class, 'idProducto');
+        return $this->belongsTo(Producto::class, 'producto_id');
     }
     public function compra(){
-        return $this->belongsTo(Compra::class, 'idCompra');
+        return $this->belongsTo(Compra::class, 'compra_id');
     }
 }

@@ -13,7 +13,7 @@ class ProductoController extends Controller
     {
         $productos = Producto::paginate();
         
-        return view('producto.index', compact('productos'))
+        return view('producto.indexUser', compact('productos'))
             ->with('i', (request()->input('page', 1) - 1) * $productos->perPage());
     }
 

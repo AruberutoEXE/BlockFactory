@@ -1,11 +1,11 @@
 <?php
 
+
+use App\Http\Controllers\CarroController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CarritoController;
-use App\Http\Controllers\ProductoController;
+/*use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
-//use App\Http\Controllers\LibroController;
-//use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\CarroController;*/
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,9 +16,8 @@ use App\Http\Controllers\CategoriaController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('productos');
 });
 
 Route::get('/home', function () {
@@ -26,8 +25,13 @@ Route::get('/home', function () {
     })->middleware('auth');
 
 //Auth::routes();
-
+Route::get('carro-add/{id}',[CarroController::class,'add'])->name('carro.add');
+Route::get('carro-index',[CarroController::class,'index'])->name('carro.index');
+Route::post('carro-removeItem/{id}',[CarroController::class,'removeitem'])->name('carro.removeitem');
+Route::post('carro-store',[CarroController::class,'store'])->name('carro.store');
 Route::resource('productos',ProductoController::class);
 Route::resource('categorias',CategoriaController::class);
-Route::resource('Carrito',CarritoController::class);
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
