@@ -1,8 +1,5 @@
-<div class="box box-info padding-1">
+<div class="box bg-light box-info padding-1">
     <div class="box-body">
-        
-     
-
         <div class="form-group">
             {{ Form::label('_categoria') }}
             {{ Form::select('categoria_id', $categorias , $producto->categoria_id, ['class' => 'form-control' . ($errors->has('categoria_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione la categoria']) }}
@@ -22,7 +19,7 @@
         </div>
        
     </div>
-    <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="pt-3 box-footer mt20">
+        <button type="submit" class="btn btn-primary">Crear</button>
     </div>
 </div>
