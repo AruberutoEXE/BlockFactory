@@ -30,7 +30,7 @@ carrito
 											<td>{{ $producto->nombre }}</td>
                                             <td>{{ $producto->precio }}€</td>
                                             <td>
-                                                <form action="{{ route('carro.removeitem',$producto->id) }}" method="POST">
+                                                <form action="{{ route('carro.removeitem',$producto) }}" method="POST">
                                                     @csrf
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
                                                 </form>

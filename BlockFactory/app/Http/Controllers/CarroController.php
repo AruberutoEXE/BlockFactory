@@ -92,7 +92,7 @@ class CarroController extends Controller
     */
     public function removeitem(Request $request)
     {
-        $linea=LineaCarro::find($request->id);
+        $linea=LineaCarro::where('producto_id',$request->id)->first();
         $linea->delete();
         return redirect()->route('carro.index');
     }
