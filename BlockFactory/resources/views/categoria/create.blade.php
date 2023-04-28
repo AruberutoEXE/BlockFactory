@@ -12,10 +12,9 @@
                 @includeif('partials.errors')
 
                 <div class="card card-default">
-                    <div class="card-header">
-                        <span class="card-title">Crear categoria</span>
-                    </div>
-                    <div class="card-body">
+                <h2 class="text-center p-3">CREAR CATEGORÍA</h2>
+                <hr>
+                    <div class="card-body bg-light text-center">
                         <form method="POST" action="{{ route('categorias.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 

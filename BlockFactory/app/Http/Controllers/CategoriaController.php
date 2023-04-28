@@ -30,7 +30,7 @@ class CategoriaController extends Controller
         
 
         return redirect()->route('categorias.index')
-            ->with('success', 'categoria created successfully.');
+            ->with('success', 'Categoría creada correctamente');
     }
 
     public function show($id)
@@ -54,7 +54,7 @@ class CategoriaController extends Controller
         $categoria->update($request->all());
 
         return redirect()->route('categorias.index')
-            ->with('success', 'categoria updated successfully');
+            ->with('success', 'Categoría actualizada correctamente');
     }
 
     public function destroy($id)
@@ -62,6 +62,6 @@ class CategoriaController extends Controller
         $categoria = Categoria::find($id)->delete();
 
         return redirect()->route('categorias.index')
-            ->with('success', 'categoria deleted successfully');
+            ->with('success', 'Categoría eliminada correctamente');
     }
 }
