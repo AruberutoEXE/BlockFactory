@@ -97,7 +97,14 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background-color: yellow;
+  
+  background: repeating-linear-gradient(
+    -45deg,
+    yellow,
+    yellow 5px,
+    rgb(255, 251, 182) 5px,
+    rgb(255, 251, 182) 10px
+  );
 }
 
 hr {

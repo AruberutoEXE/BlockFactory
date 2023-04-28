@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\CarroController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserSettingsController;
 /*use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CarroController;*/
@@ -35,3 +36,12 @@ Route::resource('categorias',CategoriaController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+
+Auth::routes();
+Route::get('/set_language/{lang}', [App\Http\Controllers\Controller::class, 'set_language'])->name('set_language');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/NewPassword',  [UserSettingsController::class,'NewPassword'])->name('NewPassword')->middleware('auth');
+Route::post('/change/password',  [UserSettingsController::class,'changePassword'])->name('changePassword');

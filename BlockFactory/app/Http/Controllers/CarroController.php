@@ -55,6 +55,7 @@ class CarroController extends Controller
         LineaCarro::create(['producto_id'=>$request->id,'carro_id'=>$carro->id]);
         
         return redirect('productos');
+        
     }
 
      /**
@@ -77,6 +78,8 @@ class CarroController extends Controller
         
         return view('producto.indexUser', compact('productos'))
             ->with('i', (request()->input('page', 1) - 1) * $productos->perPage());
+        
+            
     }
     
 
@@ -89,7 +92,7 @@ class CarroController extends Controller
     */
     public function removeitem(Request $request)
     {
-        $linea=LineaCarro::find($request->id);
+        $linea=LineaCarro::where('producto_id',$request->id)->first();
         $linea->delete();
         return redirect()->route('carro.index');
     }

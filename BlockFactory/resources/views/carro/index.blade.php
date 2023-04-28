@@ -5,68 +5,63 @@ carrito
 @endsection
 
 @section('content')
-<div class="container">
-            <header class="blog-header py-3">
-            </header>
 
+    <div class="container">   
+        <div class="card-group ">
+            <div class="card  border-dark bg-light">
+                <div class="float-left m-1 ">
+                <h2 class="text-center p-3">CARRO COMPRA </h2>
+                </div>
+                
+                
 
-        <main class="container">
-            
-
-            <div class="row g-6 rounded ">
-                <div class="col-md-8">
-
-
-                    <article class="blog-post  p-3 rounded ">
-                        
-                    <table class="table table-striped table-hover">
-                                <thead class="thead">
-                                    <tr>
+                <div class="card   bg-light">
+                    <table class="table table-striped table-hover text-center">
+                        <thead class="thead">
+                            <tr>
 										<th>Nombre</th>
                                         <th>Precio</th>
                                         <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                            </tr>
+                        </thead>
+                            <tbody>
                                     @foreach ($productos as $producto)
                                         <tr>
 											<td>{{ $producto->nombre }}</td>
                                             <td>{{ $producto->precio }}€</td>
                                             <td>
-                                                <form action="{{ route('carro.removeitem',$producto->id) }}" method="POST">
+                                                <form action="{{ route('carro.removeitem',$producto) }}" method="POST">
                                                     @csrf
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
                                                 </form>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
-                            </table>
-
-                    </article>
-
-
+                        </table>
                 </div>
-
-                <div class="col-md-4">
-                    <div class="position-sticky" style="top: 2rem;">
-                        <div class="p-4 mb-3 bg-light rounded ">
-                            <p class="mb-0">{{ $total }}</p>
+                <div class="card  bg-light">
+                        <div class="position-sticky" style="top: 2rem;">
+                            <div class="p-1 mb-3 bg-light rounded ">
+                            <h2 class="text-center p-3">Total:  <hr></h2>
+                                <h1 class="text-center mb-0">{{ $total }} €</h1>
+                                <div class="col text-center pb-2">
+                                    <form method="POST" action="{{route('carro.store') }}"  role="form" enctype="multipart/form-data">
+                                        @csrf
+                                        <button class=" btn btn-primary" type="submit" >Comprar</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="p-4 bg-secondary">
-                        <form method="POST" action="{{route('carro.store') }}"  role="form" enctype="multipart/form-data">
-                        @csrf
-                        <button type="submit" >Comprar</button>
-
-                        </form>
-                        </div>
-                        <hr>
+                        
                     </div>
-                </div>
+                
             </div>
+        </div>
+    </div>
 
-        </main>
+     </main>
 
      
 @endsection
