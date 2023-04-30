@@ -3,9 +3,9 @@
         
         <div class="form-group">
 
-            {{ Form::label('Nombre') }}
-            {{ Form::select('categoria', array('Escultura' => 'Escultura', 'Edificio' => 'Edificio', 'Persona' => 'Persona','Animal' => 'Animal')) }};
-
+            {{ Form::label('Tipo') }}
+            {{ Form::text('tipo', $categoria->tipo, ['class' => 'form-control' . ($errors->has('tipo') ? ' is-invalid' : ''), 'placeholder' => 'Tipo']) }}
+            
         </div>
 
     </div>
