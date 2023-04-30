@@ -98,7 +98,9 @@ class CarroController extends Controller
     {
         $linea=LineaCarro::where('producto_id',$request->id)->first();
         $linea->delete();
-        return redirect()->route('carro.index');
+        return redirect()->route('productos.index')
+            ->with('success', 'Producto eliminado correctamente del carrito');
+    
     }
     
 

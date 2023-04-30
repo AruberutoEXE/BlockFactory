@@ -10893,4 +10893,8 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+  .favorito-activo svg {
+    fill: yellow;
+}
+
 }

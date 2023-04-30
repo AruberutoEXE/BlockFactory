@@ -33,10 +33,11 @@ producto
 
           <div class="container">
             <div class="row">
+              
               @foreach ($productos as $producto)
               <div class="col-md-6 col-lg-3">
                 <div class="card mb-4 box-shadow border-dark mb-4">
-                  <img class="card-img-top" src="img/{{$producto->nombre}}.png" alt="Card image cap">
+                  <img class="card-img-top" style="max-height:195px;" src="img/{{$producto->id}}.png" alt="Card image cap">
                   <div class="card-body bg-light">
                     <p class="card-text">{{ $producto->nombre }}</p>
                     <div class="d-flex justify-content-between align-items-center">

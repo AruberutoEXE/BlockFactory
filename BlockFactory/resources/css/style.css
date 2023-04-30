@@ -1,3 +1,9 @@
 body{
     background-color: yellow;
 }
+
+
+
+.card-img, .card-img-top, .card-img-bottom {
+    max-height: 195px;
+}
