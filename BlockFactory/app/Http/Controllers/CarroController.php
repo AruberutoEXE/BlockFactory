@@ -20,23 +20,27 @@ class CarroController extends Controller
     */
     public function index()
     {
-        $carro = Carro::where('idCliente', Auth::id())->first();
-        if(empty($carro)){
-            $carro =Carro::create(['idCliente'=>Auth::id()]);
-            $user=Auth::user();
-            $user->idCarro=$carro->id;
-        }
+        if(!empty(Auth::id())){
+            $carro = Carro::where('idCliente', Auth::id())->first();
+            if(empty($carro)){
+                $carro =Carro::create(['idCliente'=>Auth::id()]);
+                $user=Auth::user();
+                $user->idCarro=$carro->id;
+            }
 
 
-        $id=$carro->id;
-        $lineas=LineaCarro::where('carro_id', $id)->get();
-        $productos=[];
-        $total=0;
-        for ($i=0 ; $i<count($lineas);$i++) {
-            $productos[$i]=$lineas[$i]->producto;
-            $total=$total+$productos[$i]->precio;
+            $id=$carro->id;
+            $lineas=LineaCarro::where('carro_id', $id)->get();
+            $productos=[];
+            $total=0;
+            for ($i=0 ; $i<count($lineas);$i++) {
+                $productos[$i]=$lineas[$i]->producto;
+                $total=$total+$productos[$i]->precio;
+            }
+            return view('carro.index', compact(['carro','productos','total']));
+        }else{
+            return view('Auth.login');
         }
-        return view('carro.index', compact(['carro','productos','total']));
     }
 /**
     * Remove the specified resource from storage.

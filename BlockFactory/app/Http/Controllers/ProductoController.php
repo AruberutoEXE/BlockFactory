@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\favorito;
 use App\Models\Producto;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
 class ProductoController extends Controller
 {
 
@@ -37,8 +39,16 @@ class ProductoController extends Controller
     public function show($id)
     {
         $producto = Producto::find($id);
-
-        return view('producto.show', compact('producto'));
+        $fav=true;
+        if(!empty(Auth::id())){
+            $favorito=favorito::where('id_producto',$id)->where('id_user', Auth::id());
+            if(empty($favorito)){
+                $fav=false;
+            }
+         }else{
+            $fav=false;
+        }
+        return view('producto.show', compact(['producto','fav']));
     }
 
     public function edit($id)
