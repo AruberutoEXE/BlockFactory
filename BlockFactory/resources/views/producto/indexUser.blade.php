@@ -39,7 +39,10 @@ producto
                 <div class="card mb-4 box-shadow border-dark mb-4">
                   <img class="card-img-top" style="max-height:195px;" src="img/{{$producto->id}}.png" alt="Card image cap">
                   <div class="card-body bg-light">
+                    <h5>Nombre</h5>
                     <p class="card-text">{{ $producto->nombre }}</p>
+                    <h5>Cantidad:</h5>
+                    <p class="card-text">{{ $producto->cantidad }}</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
                         <a class="btn btn-sm btn-primary " href="{{ route('productos.show',$producto->id) }}"><i class="fa fa-fw fa-eye"></i>@lang('messages.mas')</a>
