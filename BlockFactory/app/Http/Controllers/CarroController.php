@@ -57,8 +57,15 @@ class CarroController extends Controller
             $user->idCarro=$carro->id;
         }
         LineaCarro::create(['producto_id'=>$request->id,'carro_id'=>$carro->id]);
+        $producto = Producto::find($request->id);
+        $stock = $producto->cantidad -= 1;
+        if ($stock < 0) {
+            $stock = 0;
+        }
+        $producto->cantidad = $stock;
+        $producto->save();
         
-        return redirect('productos');
+        return redirect()->route('productos.index')->with('success','Producto añadido al carrito correctamente');
         
     }
 
@@ -98,6 +105,10 @@ class CarroController extends Controller
     {
         $linea=LineaCarro::where('producto_id',$request->id)->first();
         $linea->delete();
+        $producto = Producto::find($request->id);
+        $stock = $producto->cantidad += 1;
+        $producto->cantidad = $stock;
+        $producto->save();
         return redirect()->route('productos.index')
             ->with('success', 'Producto eliminado correctamente del carrito');
     
