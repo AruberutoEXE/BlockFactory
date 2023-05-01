@@ -45,7 +45,7 @@
                         </div>
 
 
-                        @if(!$fav) 
+                        @if($fav) 
                             <div>
                                 <a class="btn btn-primary" href="{{ route('favorito.remove',$producto->id) }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">

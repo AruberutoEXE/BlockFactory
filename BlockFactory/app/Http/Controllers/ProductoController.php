@@ -41,9 +41,9 @@ class ProductoController extends Controller
         $producto = Producto::find($id);
         $fav=false;
         if(!empty(Auth::id())){
-            $favorito=favorito::where('id_producto',$id);
+            $favorito=favorito::where('producto_id',$id);
             if(!empty($favorito)){
-                $favorito=$favorito->where('id_user', Auth::id())->first();
+                $favorito=$favorito->where('user_id', Auth::id())->first();
                 if(!empty($favorito)){
                     $fav=true;
                 }
