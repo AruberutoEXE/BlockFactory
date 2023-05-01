@@ -39,15 +39,16 @@ class ProductoController extends Controller
     public function show($id)
     {
         $producto = Producto::find($id);
-        $fav=true;
+        $fav=false;
         if(!empty(Auth::id())){
-            $favorito=favorito::where('id_producto',$id)->where('id_user', Auth::id());
-            if(empty($favorito)){
-                $fav=false;
+            $favorito=favorito::where('id_producto',$id);
+            if(!empty($favorito)){
+                $favorito=$favorito->where('id_user', Auth::id())->first();
+                if(!empty($favorito)){
+                    $fav=true;
+                }
             }
-         }else{
-            $fav=false;
-        }
+         }
         return view('producto.show', compact(['producto','fav']));
     }
 

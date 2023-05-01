@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
+use App\Models\Producto;
+use App\Models\Categoria;
+
 class ProductosSeeders extends Seeder
 {
     /**
@@ -13,11 +16,7 @@ class ProductosSeeders extends Seeder
      */
     public function run()
     {
-        DB::table('Productos')->insert(['categoria_id'=> Str::random(10),'nombre'=> Str::random(10),'precio'=>20,'cantidad'=>200,'descripcion'=> Str::random(10)]);
-        DB::table('Productos')->insert(['categoria_id'=> Str::random(10),'nombre'=> Str::random(10),'precio'=>20,'cantidad'=>200,'descripcion'=> Str::random(10)]);
-        DB::table('Productos')->insert(['categoria_id'=> Str::random(10),'nombre'=> Str::random(10),'precio'=>20,'cantidad'=>200,'descripcion'=> Str::random(10)]);
-        DB::table('Productos')->insert(['categoria_id'=> Str::random(10),'nombre'=> Str::random(10),'precio'=>20,'cantidad'=>200,'descripcion'=> Str::random(10)]);
-        DB::table('Productos')->insert(['categoria_id'=> Str::random(10),'nombre'=> Str::random(10),'precio'=>20,'cantidad'=>200,'descripcion'=> Str::random(10)]);
-    
+        $cat=Categoria::create( ['tipo'=>'juguete']);
+        Producto::create(['categoria_id'=>$cat->id,'nombre'=>'Set de construcción','precio'=>20,'cantidad'=>50,'descripcion'=>'Gran colección, pack conmemorativo']);
     }
 }
