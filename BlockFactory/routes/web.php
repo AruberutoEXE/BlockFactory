@@ -2,7 +2,10 @@
 
 
 use App\Http\Controllers\CarroController;
-use App\Http\Controllers\FavoritosController;
+<<<<<<< Updated upstream
+=======
+use App\Http\Controllers\FavoritoController;
+>>>>>>> Stashed changes
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserSettingsController;
 /*use App\Http\Controllers\ProductoController;
@@ -33,8 +36,14 @@ Route::post('carro-removeItem/{id}',[CarroController::class,'removeitem'])->name
 Route::post('carro-store',[CarroController::class,'store'])->name('carro.store');
 Route::resource('productos',ProductoController::class);
 Route::resource('categorias',CategoriaController::class);
-Route::get('fav-add/{id}',[FavoritosController::class,'add'])->name('favorito.add');
-Route::get('fav-remove/{id}',[FavoritosController::class,'remove'])->name('favorito.remove');
+<<<<<<< Updated upstream
+Route::post('fav-add/{id}',[CarroController::class,'add'])->name('favorito.add');
+Route::post('fav-remove/{id}',[CarroController::class,'remove'])->name('favorito.remove');
+=======
+Route::get('fav-index',[FavoritoController::class,'index'])->name('favorito.index');
+Route::get('fav-add/{id}',[FavoritoController::class,'add'])->name('favorito.add');
+Route::get('fav-remove/{id}',[FavoritoController::class,'remove'])->name('favorito.remove');
+>>>>>>> Stashed changes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
