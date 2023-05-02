@@ -65,6 +65,7 @@ class ProductoController extends Controller
                 }
             }
          }
+
          $auth=false;
        
          if(!empty(Auth::id())){
@@ -74,6 +75,9 @@ class ProductoController extends Controller
              }
          }
         return view('producto.show', compact(['producto','fav','auth']));
+
+        
+
     }
 
     public function edit($id)
