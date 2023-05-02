@@ -52,7 +52,10 @@
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('carro.index') }}">@lang('messages.carro')</a>
-                        </li>                      
+                        </li>   
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('favorito.index') }}">Favoritos</a>
+                        </li>                   
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ __("Escoge lenguaje") }}
