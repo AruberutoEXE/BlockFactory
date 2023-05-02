@@ -2,10 +2,10 @@
 
 
 use App\Http\Controllers\CarroController;
-<<<<<<< Updated upstream
-=======
+
+
 use App\Http\Controllers\FavoritoController;
->>>>>>> Stashed changes
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserSettingsController;
 /*use App\Http\Controllers\ProductoController;
@@ -39,11 +39,11 @@ Route::resource('categorias',CategoriaController::class);
 <<<<<<< Updated upstream
 Route::post('fav-add/{id}',[CarroController::class,'add'])->name('favorito.add');
 Route::post('fav-remove/{id}',[CarroController::class,'remove'])->name('favorito.remove');
-=======
+
 Route::get('fav-index',[FavoritoController::class,'index'])->name('favorito.index');
 Route::get('fav-add/{id}',[FavoritoController::class,'add'])->name('favorito.add');
 Route::get('fav-remove/{id}',[FavoritoController::class,'remove'])->name('favorito.remove');
->>>>>>> Stashed changes
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
