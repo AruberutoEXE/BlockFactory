@@ -36,7 +36,7 @@ Route::post('carro-removeItem/{id}',[CarroController::class,'removeitem'])->name
 Route::post('carro-store',[CarroController::class,'store'])->name('carro.store');
 Route::resource('productos',ProductoController::class);
 Route::resource('categorias',CategoriaController::class);
-<<<<<<< Updated upstream
+
 Route::post('fav-add/{id}',[CarroController::class,'add'])->name('favorito.add');
 Route::post('fav-remove/{id}',[CarroController::class,'remove'])->name('favorito.remove');
 
