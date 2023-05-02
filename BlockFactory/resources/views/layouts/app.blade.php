@@ -45,10 +45,15 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('productos.index') }}">@lang('messages.productos')</a>
                         </li>
-
-                        <li class="nav-item">
+                        @isset($auth)
+                        @if($auth)
+                      
+                        
+                        <li class="nav-item">                           
                             <a class="nav-link" href="{{ route('categorias.index') }}">@lang('messages.categorias')</a>
                         </li>
+                        @endif
+                        @endisset
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('carro.index') }}">@lang('messages.carro')</a>

@@ -14,12 +14,15 @@ producto
             
             <h2 class="text-center p-3">@lang('messages.LISTADO')</h2>
           
-
+            @isset($auth)
+                        @if($auth)
           <div class="float-right">
             <a href="{{ route('productos.create') }}" class="btn btn-primary btn-sm "  data-placement="left">
                @lang('messages.new')
             </a>
           </div>
+          @endif
+                        @endisset
 
         </div>
 <hr>
