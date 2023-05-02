@@ -49,7 +49,7 @@ class CarroController extends Controller
     * @return \Illuminate\Http\Response
     */
     public function add(Request $request){
-
+        if(!empty(Auth::id())){
         $carro = Carro::where('idCliente', Auth::id())->first();
         if(empty($carro)){
             $carro =Carro::create(['idCliente'=>Auth::id()]);
@@ -65,7 +65,11 @@ class CarroController extends Controller
         $producto->cantidad = $stock;
         $producto->save();
         
-        return redirect()->route('productos.index')->with('success','Producto añadido al carrito correctamente');
+        return redirect()->route('productos.index')->with('success','Producto añadido al carrito correctamente');}
+        else{
+           
+                return view('Auth.login');
+        }
         
     }
 
