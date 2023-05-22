@@ -17,9 +17,12 @@ class ProductoController extends Controller
         $auth=false;
         $productos = Producto::paginate();
         if(!empty(Auth::id())){
-           $admin= Administrador::where('user_id',Auth::id());
+           $admin= Administrador::where('user_id',Auth::id())->get();
+           
             if(!empty($admin)){
-                $auth=true;
+                if(sizeof( $admin)!=0){
+                    $auth=true;
+                }
             }
         }
        
@@ -48,11 +51,14 @@ class ProductoController extends Controller
         $auth=false;
        
         if(!empty(Auth::id())){
-           $admin= Administrador::where('user_id',Auth::id());
-            if(!empty($admin)){
-                $auth=true;
-            }
-        }
+            $admin= Administrador::where('user_id',Auth::id())->get();
+            
+             if(!empty($admin)){
+                 if(sizeof( $admin)!=0){
+                     $auth=true;
+                 }
+             }
+         }
         return view('producto.create', compact('producto' , 'categorias','auth'));
     }
 
@@ -70,13 +76,13 @@ class ProductoController extends Controller
         $producto = Producto::find($id);
         $fav=false;
         if(!empty(Auth::id())){
-            $favorito=favorito::where('producto_id',$id);
-            if(!empty($favorito)){
-                $favorito=$favorito->where('user_id', Auth::id())->first();
-                if(!empty($favorito)){
-                    $fav=true;
-                }
-            }
+            $admin= Administrador::where('user_id',Auth::id())->get();
+            
+             if(!empty($admin)){
+                 if(sizeof( $admin)!=0){
+                     $auth=true;
+                 }
+             }
          }
 
          $auth=false;
@@ -97,11 +103,14 @@ class ProductoController extends Controller
         $auth=false;
        
         if(!empty(Auth::id())){
-           $admin= Administrador::where('user_id',Auth::id());
-            if(!empty($admin)){
-                $auth=true;
-            }
-        }
+            $admin= Administrador::where('user_id',Auth::id())->get();
+            
+             if(!empty($admin)){
+                 if(sizeof( $admin)!=0){
+                     $auth=true;
+                 }
+             }
+         }
         return view('producto.edit', compact('producto' , 'categorias','auth'));
     }
 
