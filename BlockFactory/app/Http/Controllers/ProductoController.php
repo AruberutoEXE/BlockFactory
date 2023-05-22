@@ -13,7 +13,8 @@ class ProductoController extends Controller
 {
 
     public function index()
-    {   $auth=false;
+    {           
+        $auth=false;
         $productos = Producto::paginate();
         if(!empty(Auth::id())){
            $admin= Administrador::where('user_id',Auth::id());
@@ -21,7 +22,22 @@ class ProductoController extends Controller
                 $auth=true;
             }
         }
-        return view('producto.indexUser', compact('productos','auth'))
+       
+        for($i =0;$i< sizeof($productos);$i++){
+            $productos[$i]->fav=false;
+            if(!empty(Auth::id())){
+                $favorito=favorito::where('producto_id',$productos[$i]->id);
+                if(!empty($favorito)){
+                    $favorito=$favorito->where('user_id', Auth::id())->first();
+                    if(!empty($favorito)){
+                        $productos[$i]->fav=true;
+                    }
+                }
+            }
+        }
+       
+
+        return view('producto.index', compact('productos','auth'))
             ->with('i', (request()->input('page', 1) - 1) * $productos->perPage());
     }
 
@@ -45,9 +61,6 @@ class ProductoController extends Controller
         request()->validate(Producto::$rules);
 
         $producto = Producto::create($request->all());
-       
-       
-       
         return redirect()->route('productos.index')
             ->with('success', 'Producto creado correctamente.');
     }
@@ -75,9 +88,6 @@ class ProductoController extends Controller
              }
          }
         return view('producto.show', compact(['producto','fav','auth']));
-
-        
-
     }
 
     public function edit($id)
@@ -100,10 +110,6 @@ class ProductoController extends Controller
         request()->validate(Producto::$rules);
 
         $producto->update($request->all());
-
-       
-  
-
         return redirect()->route('productos.index')
             ->with('success', 'Producto actualizadO correctamente');
     }
@@ -111,9 +117,6 @@ class ProductoController extends Controller
     public function destroy($id)
     {
         $producto = Producto::find($id)->delete();
-       
-
-
         return redirect()->route('productos.index')
             ->with('success', 'Producto eliminado correctamente');
     }
