@@ -11,6 +11,7 @@ use App\Models\Producto;
 
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 class FavoritoController extends Controller
 {
 
@@ -55,7 +56,7 @@ class FavoritoController extends Controller
                      $auth=true;
                  }
              }
-            return view('producto.show', compact(['producto','fav','auth']));
+             return Redirect::back();//return view('producto.show', compact(['producto','fav','auth']));
         }else{
             return view('Auth.login');
         }
@@ -84,7 +85,7 @@ class FavoritoController extends Controller
                  $auth=true;
              }
          }
-        return view('producto.show', compact(['producto','fav','auth']));
+         return Redirect::back();//return view('producto.show', compact(['producto','fav','auth']));
         }else{
             return view('Auth.login');
         }
