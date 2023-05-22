@@ -44,7 +44,7 @@ Route::get('fav-index',[FavoritoController::class,'index'])->name('favorito.inde
 Route::get('fav-add/{id}',[FavoritoController::class,'add'])->name('favorito.add');
 Route::get('fav-remove/{id}',[FavoritoController::class,'remove'])->name('favorito.remove');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 
 
@@ -56,3 +56,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/NewPassword',  [UserSettingsController::class,'NewPassword'])->name('NewPassword')->middleware('auth');
 Route::post('/change/password',  [UserSettingsController::class,'changePassword'])->name('changePassword');
+Route::middleware(['auth', 'verified'])->group(function () {
+    
+});
+Auth::routes(['verify' => true]);
+
