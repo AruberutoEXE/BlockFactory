@@ -15,14 +15,14 @@ producto
             <h2 class="text-center p-3">@lang('messages.LISTADO')</h2>
           
             @isset($auth)
-                        @if($auth)
-          <div class="float-right">
-            <a href="{{ route('productos.create') }}" class="btn btn-primary btn-sm "  data-placement="left">
-               @lang('messages.new')
-            </a>
-          </div>
-          @endif
-                        @endisset
+              @if($auth)
+                <div class="float-right">
+                  <a href="{{ route('productos.create') }}" class="btn btn-primary btn-sm "  data-placement="left">
+                    @lang('messages.new')
+                  </a>
+                </div>
+              @endif
+            @endisset
 
         </div>
 <hr>
@@ -44,8 +44,8 @@ producto
                   <div class="card-body bg-light">
                     <h5>Nombre</h5>
                     <p class="card-text">{{ $producto->nombre }}</p>
-                    <h5>Cantidad:</h5>
-                    <p class="card-text">{{ $producto->cantidad }}</p>
+                    <h5 class="text-muted">{{ $producto->precio }} €</h5>
+                    <br>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
                         <a class="btn btn-sm btn-primary " href="{{ route('productos.show',$producto->id) }}"><i class="fa fa-fw fa-eye"></i>@lang('messages.mas')</a>
@@ -56,7 +56,6 @@ producto
                       </div>
 
                       
-                      <span class="text-muted">{{ $producto->precio }} €</span>
 
                     </div>
                   </div>

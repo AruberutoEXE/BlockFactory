@@ -38,7 +38,6 @@ producto
 										<th>Tipo Categoría</th>
 										<th>Nombre</th>
                                         <th>Precio</th>
-                                        <th>Cantidad</th>
                                         <th>Descripcion</th>
 
                                         <th></th>
@@ -56,8 +55,6 @@ producto
 											<td>{{ $producto->nombre }}</td>
 
                                             <td>{{ $producto->precio }}€</td>
-
-                                            <td>{{ $producto->cantidad }}</td>
 
                                             <td>{{ $producto->descripcion }}</td>
 
