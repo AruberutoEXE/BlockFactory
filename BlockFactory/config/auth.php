@@ -107,7 +107,11 @@ return [
     */
 
     'password_timeout' => 10800,
-    //'verification' => true,
+   /* 'verification' => [
+        'enabled' => true,
+    ],*/
+    
+    
 
 
 ];
