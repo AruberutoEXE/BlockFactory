@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Producto extends Model
 {
+    public $timestamps = false;
     static $rules = [
 		'categoria_id' => 'required',
 		'nombre' => 'required',

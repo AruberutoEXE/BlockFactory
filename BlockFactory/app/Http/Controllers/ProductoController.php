@@ -47,7 +47,7 @@ class ProductoController extends Controller
     public function create()
     {
         $producto = new Producto();
-        $categorias = Categoria::pluck('id','tipo'); //inner join
+        $categorias = Categoria::pluck('tipo','id'); //inner join
         $auth=false;
        
         if(!empty(Auth::id())){

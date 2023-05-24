@@ -20,7 +20,6 @@ return new class extends Migration
             $table->float('precio', 8, 2);
             $table->integer('cantidad');
             $table->string('descripcion');
-            $table->timestamps();
         });
     }
 
