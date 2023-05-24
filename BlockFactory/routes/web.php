@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\Auth\VerificationController;
 
 
 use App\Http\Controllers\CarroController;
@@ -44,11 +45,11 @@ Route::get('fav-index',[FavoritoController::class,'index'])->name('favorito.inde
 Route::get('fav-add/{id}',[FavoritoController::class,'add'])->name('favorito.add');
 Route::get('fav-remove/{id}',[FavoritoController::class,'remove'])->name('favorito.remove');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 
-Auth::routes();
+Auth::Routes();
+//Auth::routes(['verify' => true]);
 Route::get('/set_language/{lang}', [App\Http\Controllers\Controller::class, 'set_language'])->name('set_language');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -56,3 +57,19 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/NewPassword',  [UserSettingsController::class,'NewPassword'])->name('NewPassword')->middleware('auth');
 Route::post('/change/password',  [UserSettingsController::class,'changePassword'])->name('changePassword');
+
+/*Route::middleware(['auth', 'verified'])->group(function () {
+    // Rutas protegidas que requieren verificación de correo electrónico
+    Route::get('/home', function () {
+        return view('auth.dashboard');
+    });
+});*/
+
+//Auth::routes(['verify' => true]);
+/*Route::middleware(['auth'])->group(function () {
+
+
+Route::get('/email/verify', [App\Http\Controllers\Auth\VerificationController::class, 'notice'])->name('verification.notice');
+
+});
+*/
