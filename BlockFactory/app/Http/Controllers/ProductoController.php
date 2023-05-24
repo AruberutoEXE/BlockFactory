@@ -96,10 +96,10 @@ class ProductoController extends Controller
         return view('producto.show', compact(['producto','fav','auth']));
     }
 
-    public function edit($id)
+    public function edit(Request $request)
     {
-        $producto = Producto::find($id);
-        $categorias = Categoria::pluck('id','tipo'); //inner join
+        $producto = Producto::find($request->id);
+        $categorias = Categoria::pluck('tipo','id'); //inner join
         $auth=false;
        
         if(!empty(Auth::id())){
@@ -123,9 +123,9 @@ class ProductoController extends Controller
             ->with('success', 'Producto actualizadO correctamente');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $producto = Producto::find($id)->delete();
+        $producto = Producto::find($request->id)->delete();
         return redirect()->route('productos.index')
             ->with('success', 'Producto eliminado correctamente');
     }

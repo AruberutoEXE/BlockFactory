@@ -66,7 +66,20 @@
                         @endif
 
 
-                        
+                        @isset($auth)
+              @if($auth)
+              <div >
+                <form class="p-1" style="margin-left:0.5%" action="{{ route('producto.remove',$producto->id) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                </form>
+                <form  class="p-1"style="margin-left:0.5%" action="{{ route('producto.edit',$producto->id) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-success btn-sm"><i class="bi bi-pencil-square"></i> Editar</button>
+                </form>
+                </div>  
+              @endif
+            @endisset
 
                         
 

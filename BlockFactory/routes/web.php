@@ -1,17 +1,11 @@
 <?php
 use App\Http\Controllers\Auth\VerificationController;
 
-
-use App\Http\Controllers\CarroController;
-
-
-use App\Http\Controllers\FavoritoController;
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarroController;
+use App\Http\Controllers\FavoritoController;
+//use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UserSettingsController;
-/*use App\Http\Controllers\ProductoController;
-use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\CarroController;*/
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +30,8 @@ Route::get('carro-index',[CarroController::class,'index'])->name('carro.index');
 Route::post('carro-removeItem/{id}',[CarroController::class,'removeitem'])->name('carro.removeitem');
 Route::post('carro-store',[CarroController::class,'store'])->name('carro.store');
 Route::resource('productos',ProductoController::class);
+Route::post('productos-remove/{id}',[App\Http\Controllers\ProductoController::class,'destroy'])->name('producto.remove');
+Route::post('productos-edit/{id}',[App\Http\Controllers\ProductoController::class,'edit'])->name('producto.edit');
 Route::resource('categorias',CategoriaController::class);
 
 Route::post('fav-add/{id}',[CarroController::class,'add'])->name('favorito.add');
