@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth; //Necesario
 use Illuminate\Support\Facades\Hash; //Necesario
 use Illuminate\Support\Facades\DB; //Necesario
 
-class UserSettingsController extends Controller
+class UserSettingsController extends Controller 
 {
 
     public function NewPassword(){

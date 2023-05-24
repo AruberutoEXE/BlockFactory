@@ -17,5 +17,11 @@ class Authenticate extends Middleware
         if (! $request->expectsJson()) {
             return route('login');
         }
+        if(!$request->validate([
+            'email' => 'required|email|ends_with:@gmail.com'])){
+                
+        }
+        
     }
+
 }
