@@ -75,6 +75,7 @@ class ProductoController extends Controller
     {
         $producto = Producto::find($id);
         $fav=false;
+        $auth=false;
         if(!empty(Auth::id())){
             $admin= Administrador::where('user_id',Auth::id())->get();
             
@@ -85,14 +86,7 @@ class ProductoController extends Controller
              }
          }
 
-         $auth=false;
-       
-         if(!empty(Auth::id())){
-            $admin= Administrador::where('user_id',Auth::id());
-             if(!empty($admin)){
-                 $auth=true;
-             }
-         }
+         
         return view('producto.show', compact(['producto','fav','auth']));
     }
 
