@@ -21,14 +21,16 @@ carrito
                             <tr>
 										<th>Nombre</th>
                                         <th>Precio</th>
+                                        <th>Cantidad</th>
                                         <th></th>
                             </tr>
                         </thead>
                             <tbody>
                                     @foreach ($productos as $producto)
                                         <tr>
-											<td>{{ $producto->nombre }}</td>
-                                            <td>{{ $producto->precio }}€</td>
+											<td>{{ $producto[0]->nombre }}</td>
+                                            <td>{{ $producto[0]->precio }}€</td>
+                                            <td>{{ $producto[1]}}</td>
                                             <td>
                                                 <form action="{{ route('carro.removeitem',$producto) }}" method="POST">
                                                     @csrf

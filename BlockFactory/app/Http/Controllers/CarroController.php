@@ -8,6 +8,7 @@ use App\Models\LineaCompra;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 
 
@@ -30,12 +31,22 @@ class CarroController extends Controller
 
 
             $id=$carro->id;
-            $lineas=LineaCarro::where('carro_id', $id)->get();
+            $lineas=LineaCarro::where('carro_id', $id)->orderBy('producto_id', 'desc')->get();
             $productos=[];
+            
             $total=0;
             for ($i=0 ; $i<count($lineas);$i++) {
-                $productos[$i]=$lineas[$i]->producto;
-                $total=$total+$productos[$i]->precio;
+                if($i==0){
+                    $productos[0]=array($lineas[$i]->producto,0);
+                }
+
+                if($productos[sizeof($productos)-1][0]->id==$lineas[$i]->producto_id){
+                    $productos[sizeof($productos)-1][1]++;   
+                }else{
+                    $productos[sizeof($productos)-1]=array($lineas[$i]->producto,1);
+                }
+
+                $total=$total+$productos[sizeof($productos)-1][0]->precio;
             }
             return view('carro.index', compact(['carro','productos','total']));
         }else{
@@ -65,8 +76,8 @@ class CarroController extends Controller
         $producto->cantidad = $stock;
         $producto->save();
         
-        return redirect()->route('productos.index')->with('success','Producto añadido al carrito correctamente');}
-        else{
+        return Redirect::back();//return redirect()->route('productos.index')->with('success','Producto añadido al carrito correctamente');}
+    }else{
            
                 return view('Auth.login');
         }
@@ -91,8 +102,7 @@ class CarroController extends Controller
         }
         $productos = Producto::paginate();
         
-        return view('producto.indexUser', compact('productos'))
-            ->with('i', (request()->input('page', 1) - 1) * $productos->perPage());
+        return Redirect::back();//return view('producto.indexUser', compact('productos'))->with('i', (request()->input('page', 1) - 1) * $productos->perPage());
         
             
     }
@@ -113,8 +123,7 @@ class CarroController extends Controller
         $stock = $producto->cantidad += 1;
         $producto->cantidad = $stock;
         $producto->save();
-        return redirect()->route('productos.index')
-            ->with('success', 'Producto eliminado correctamente del carrito');
+        return Redirect::back();//->route('productos.index')->with('success', 'Producto eliminado correctamente del carrito');
     
     }
     
